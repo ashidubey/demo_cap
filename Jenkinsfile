@@ -25,7 +25,7 @@ stages
   stage('install node modules for client')
   {
       when{
-          branch 'test'
+          branch 'testing'
       }
     steps
     {
