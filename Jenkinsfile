@@ -25,7 +25,7 @@ stages
   stage('install node modules for client')
   {
       when{
-          branch 'testing'
+          branch 'test'
       }
     steps
     {
@@ -48,7 +48,7 @@ stage(‘package’)
       {
         steps
         {
-          sh 'docker build -t ashidubey/capstone_project:${GIT_COMMIT} . '
+          sh 'docker build -t ashidubey/capstone:${GIT_COMMIT} . '
         }
       }
       stage('pushing docker image')
@@ -56,7 +56,7 @@ stage(‘package’)
         steps{
           sh '''
           echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin
-          docker push ashidubey/capstone_project:${GIT_COMMIT} 
+          docker push ashidubey/capstone:${GIT_COMMIT} 
           docker logout
           '''
 

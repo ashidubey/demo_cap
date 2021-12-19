@@ -14,18 +14,18 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: ashidubey/capstone:73c6db4bc9846dd0eef12da6558484cba2fab4aa
+        image: ashidubey/capstone:${GIT_COMMIT} 
         imagePullPolicy: IfNotPresent
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 3000
+        - containerPort: 4000
         env:
           - name: MONGODB_HOST
             value: "mongodb-0.mongodb"
-          - name: MONGODB_PORT
-            value: "27017"
-
-
+          - name: MONGODB_DB
+            value: "notesdb"
+          - name: PORT
+            value: "4000"
